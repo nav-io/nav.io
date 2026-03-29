@@ -1,0 +1,430 @@
+---
+permalink: /404.html
+---
+<html>
+<head>
+  <title>404 - Page not found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    .page-404 {
+      min-height: 100vh;
+      background-color: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Sora', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: #6366f1;
+      top: -150px; left: -150px;
+      animation: orbFloat 8s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 350px; height: 350px;
+      background: #8b5cf6;
+      bottom: -100px; right: -100px;
+      animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+    }
+    .orb-3 {
+      width: 200px; height: 200px;
+      background: #a855f7;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.08;
+      animation: orbPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 20px) scale(1.1); }
+    }
+    @keyframes orbPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.08; }
+      50%       { transform: translate(-50%, -50%) scale(1.4); opacity: 0.15; }
+    }
+
+    .page-404::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridDrift 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes gridDrift {
+      0%   { transform: translateY(0); }
+      100% { transform: translateY(48px); }
+    }
+
+    /* Scanning line */
+    .page-404::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent);
+      animation: scanLine 6s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes scanLine {
+      0%   { top: -2px; opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .content-404 {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      width: 100%;
+      max-width: 560px;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ── Eye illustration ── */
+    .illustration {
+      margin: 0 auto 2rem;
+      width: 200px;
+      height: 200px;
+      animation: fadeSlideDown 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      position: relative;
+    }
+
+    .eye-outer {
+      animation: eyeBlink 5s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes eyeBlink {
+      0%, 45%, 55%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(0.05); }
+    }
+
+    .eye-pupil {
+      animation: eyeMove 8s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes eyeMove {
+      0%, 100% { transform: translate(0px, 0px); }
+      20%  { transform: translate(6px, -3px); }
+      40%  { transform: translate(-5px, 4px); }
+      60%  { transform: translate(4px, 5px); }
+      80%  { transform: translate(-6px, -4px); }
+    }
+
+    .iris-glow {
+      animation: irisGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes irisGlow {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+
+    /* Rotating surveillance ring */
+    .scan-ring {
+      animation: rotateScan 8s linear infinite;
+      transform-origin: 100px 100px;
+    }
+    .scan-ring-reverse {
+      animation: rotateScan 12s linear infinite reverse;
+      transform-origin: 100px 100px;
+    }
+    @keyframes rotateScan {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Data stream dots around eye */
+    .data-dot {
+      animation: dataPulse 2s ease-in-out infinite;
+    }
+    .data-dot:nth-child(2) { animation-delay: 0.3s; }
+    .data-dot:nth-child(3) { animation-delay: 0.6s; }
+    .data-dot:nth-child(4) { animation-delay: 0.9s; }
+    @keyframes dataPulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .error-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: #a855f7;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.25);
+      border-radius: 9999px;
+      padding: 0.3rem 0.8rem;
+      margin-bottom: 1.5rem;
+      animation: fadeSlideDown 0.7s 0s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .error-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #a855f7;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .number-404 {
+      font-size: clamp(7rem, 20vw, 12rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      animation: fadeSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .number-404::before,
+    .number-404::after {
+      content: '404';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .number-404::before {
+      animation: glitch1 4s infinite;
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    }
+    .number-404::after {
+      animation: glitch2 4s infinite;
+      clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+    }
+
+    @keyframes glitch1 {
+      0%, 90%, 100% { transform: translate(0); opacity: 0; }
+      92% { transform: translate(-4px, 1px); opacity: 0.6; }
+      94% { transform: translate(4px, -1px); opacity: 0.6; }
+      96% { transform: translate(0); opacity: 0; }
+    }
+    @keyframes glitch2 {
+      0%, 85%, 100% { transform: translate(0); opacity: 0; }
+      87% { transform: translate(4px, 2px); opacity: 0.5; }
+      89% { transform: translate(-4px, -2px); opacity: 0.5; }
+      91% { transform: translate(0); opacity: 0; }
+    }
+
+    .tagline {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin: 0 0 0.75rem;
+      animation: fadeSlideDown 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0 0 2.5rem;
+      animation: fadeSlideDown 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .subtitle em {
+      color: #a855f7;
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeSlideDown 0.7s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: #94a3b8;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      border: 1px solid #334155;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: #64748b;
+      color: #e2e8f0;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-404">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="content-404">
+
+      <!-- Eye Illustration -->
+      <div class="illustration">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Outer surveillance rings -->
+          <g class="scan-ring">
+            <circle cx="100" cy="100" r="90" stroke="rgba(168,85,247,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
+          </g>
+          <g class="scan-ring-reverse">
+            <circle cx="100" cy="100" r="78" stroke="rgba(99,102,241,0.15)" stroke-width="1" stroke-dasharray="2 6"/>
+          </g>
+
+          <!-- Data dots on outer ring -->
+          <circle class="data-dot" cx="100" cy="10" r="2.5" fill="#a855f7"/>
+          <circle class="data-dot" cx="190" cy="100" r="2.5" fill="#6366f1"/>
+          <circle class="data-dot" cx="100" cy="190" r="2.5" fill="#a855f7"/>
+          <circle class="data-dot" cx="10" cy="100" r="2.5" fill="#6366f1"/>
+
+          <!-- Eye white / sclera -->
+          <g class="eye-outer">
+            <ellipse cx="100" cy="100" rx="62" ry="38" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+            <!-- Iris -->
+            <g class="eye-pupil">
+              <circle cx="100" cy="100" r="26" fill="#1e1b4b"/>
+              <!-- Iris texture rings -->
+              <circle cx="100" cy="100" r="26" fill="none" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="20" fill="none" stroke="rgba(168,85,247,0.2)" stroke-width="0.8"/>
+              <circle cx="100" cy="100" r="14" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="0.8"/>
+
+              <!-- Iris glow fill -->
+              <circle class="iris-glow" cx="100" cy="100" r="26"
+                fill="url(#irisGrad)"/>
+
+              <!-- Pupil -->
+              <circle cx="100" cy="100" r="10" fill="#050816"/>
+
+              <!-- Pupil inner glow -->
+              <circle cx="100" cy="100" r="7" fill="url(#pupilGrad)"/>
+
+              <!-- Highlight -->
+              <ellipse cx="94" cy="94" rx="4" ry="3" fill="white" opacity="0.15"/>
+              <circle cx="106" cy="106" r="1.5" fill="white" opacity="0.08"/>
+            </g>
+          </g>
+
+          <!-- Eyelid lines -->
+          <path d="M38 100 Q100 62 162 100" stroke="#475569" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M38 100 Q100 138 162 100" stroke="#475569" stroke-width="1" fill="none" opacity="0.5"/>
+
+          <!-- Corner detail marks -->
+          <line x1="32" y1="96" x2="32" y2="104" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+          <line x1="168" y1="96" x2="168" y2="104" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+
+          <!-- Small tracking brackets -->
+          <path d="M72 72 L62 72 L62 82" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M128 72 L138 72 L138 82" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M72 128 L62 128 L62 118" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M128 128 L138 128 L138 118" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+
+          <!-- Gradients -->
+          <defs>
+            <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.6"/>
+              <stop offset="60%" stop-color="#4f46e5" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pupilGrad" cx="40%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#a855f7" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#050816" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="error-badge">SURVEILLANCE · DETECTED · 404</div>
+      <div class="number-404">404</div>
+      <p class="tagline">You weren't supposed to see this.</p>
+      <p class="subtitle">
+        This page doesn't exist — and neither does your search history.<br>
+        With Navio, <em>privacy is the default</em>, not a feature.<br>
+        Now go back where no one can track you.
+      </p>
+
+      <div class="actions">
+        <a href="{{ site.baseurl }}/" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          Back to Safety
+        </a>
+        <a href="javascript:history.back()" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          Go Back
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
